@@ -17,10 +17,10 @@ async def on_ready():
 
 # Tekstin tulostus
 @client.command()
-async def tulosta(*args):
-    await client.say("TEXT")
+async def testPrint(*args):
+    await client.say("Testing")
     await asyncio.sleep(3)
-    await client.say("ANOTHER TEXT")
+    await client.say("Another testing")
 
 client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
