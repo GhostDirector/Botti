@@ -2,5 +2,7 @@ from random import randint
 
 
 class Dice:
-    min = 1
-    max = 100
+    def __init__(self):
+        min = 1
+        max = 100
+
