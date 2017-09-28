@@ -6,3 +6,7 @@ class Dice:
         min = 1
         max = 100
 
+    def print(self, min, max):
+        print("(", min, "-", max, ") Result: ", randint(min, max))
+
+    
