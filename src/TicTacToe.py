@@ -30,4 +30,4 @@ class TicTacToe:
                 return True
 
     def botMove(self):
-        self.__board[randint(0, 2)][randint(0, 2)]
+        self.__board[randint(0, 2)][randint(0, 2)] = 'X'
