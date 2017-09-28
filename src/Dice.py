@@ -12,4 +12,14 @@ class Dice:
     def roll(self):
         self.print_roll(self.min, self.max)
 
-    
+    def set_min(self, min):
+        if min > 1:
+            self.min = min
+        else:
+            self.min = 1
+
+    def set_max(self, max):
+        if max > 1:
+            self.max = max
+        else:
+            self.max = 1
