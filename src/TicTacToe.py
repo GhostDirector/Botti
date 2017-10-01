@@ -24,6 +24,11 @@ class TicTacToe:
     def makeMove(self, spot):
         if self.isValid(spot) & self.isFree(spot):
             self.__board[spot] = 'O'
+            while True:
+                tmp = self.botMove()
+                if self.isFree(tmp):
+                    self.__board[tmp] = 'X'
+                    break
 
     def checkWinner(self):
         print()
@@ -33,11 +38,11 @@ class TicTacToe:
             return True
 
     def isValid(self, spot):
-        if spot >= 0 & spot <= 9:
+        if spot >= 0 & spot <= 8:
             return True
 
     def botMove(self):
-        self.__board[randint(0, 2)] = 'X'
+        return randint(0, 8)
 
     def Main(self):
         self.resetGame()
@@ -49,5 +54,5 @@ if __name__ == "__main__":
     game.testPrint()
     game.makeMove(4)
     game.testPrint()
-    game.botMove()
+    game.makeMove(5)
     game.testPrint()
