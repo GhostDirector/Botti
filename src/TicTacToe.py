@@ -5,11 +5,12 @@ class TicTacToe:
     __board = []
 
     def __init__(self):
+        print("TicTacToe initialized")
         for i in range(9):
-            self.__board.append('-')
+            self.__board.append("#")
 
     def sendBoard(self):
-        print()
+        return self.__board
 
     def testPrint(self):
         for x in range(0, len(self.__board)):
@@ -18,27 +19,34 @@ class TicTacToe:
 
     def resetGame(self):
         for x in range(0, len(self.__board)):
-            self.__board[x] = '-'
+            self.__board[x] = "#"
 
 
     def makeMove(self, spot):
-        if self.isValid(spot) & self.isFree(spot):
-            self.__board[spot] = 'O'
+        emptycount = 0
+        if self.isValid(spot) and self.isFree(spot):
+            self.__board[spot] = "o"
+            for i in range(0, len(self.__board)):
+                if i == "-":
+                    emptycount = emptycount + 1
             while True:
+                if emptycount is 1:
+                    return True
                 tmp = self.botMove()
                 if self.isFree(tmp):
-                    self.__board[tmp] = 'X'
-                    break
+                    self.__board[tmp] = "x"
+                    return True
+        return False
 
     def checkWinner(self):
         print()
 
     def isFree(self, spot):
-        if self.__board[spot] == '-':
+        if self.__board[spot] == "#":
             return True
 
     def isValid(self, spot):
-        if spot >= 0 & spot <= 8:
+        if spot >= 0 and spot <= 8:
             return True
 
     def botMove(self):
@@ -47,12 +55,3 @@ class TicTacToe:
     def Main(self):
         self.resetGame()
         self.sendBoard()
-
-if __name__ == "__main__":
-    game = TicTacToe()
-    game.resetGame()
-    game.testPrint()
-    game.makeMove(4)
-    game.testPrint()
-    game.makeMove(5)
-    game.testPrint()
