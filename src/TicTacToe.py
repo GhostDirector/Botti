@@ -18,20 +18,11 @@ class TicTacToe:
 
 
     def makeMove(self, spot):
-        emptycount = 0
         if self.isValid(spot) and self.isFree(spot):
             self.__board[spot] = "o"
-            for i in range(0, len(self.__board)):
-                if i == "-":
-                    emptycount = emptycount + 1
-            while True:
-                if emptycount is 1:
-                    return True
-                tmp = self.botMove()
-                if self.isFree(tmp):
-                    self.__board[tmp] = "x"
-                    return True
+            return True
         return False
+
 
     def isFree(self, spot):
         if self.__board[spot] == "#":
@@ -42,7 +33,19 @@ class TicTacToe:
             return True
 
     def botMove(self):
-        return randint(0, 8)
+        while True:
+            print("test")
+            tmp = randint(0, 8)
+            if self.isFree(tmp):
+                self.__board[tmp] = "x"
+                break
+
+
+    def checkLast(self):
+        if "#" not in self.__board:
+            return True
+        else:
+            return False
 
     def status(self):
         tmp = ""
@@ -56,3 +59,10 @@ class TicTacToe:
             else:
                 tmp = tmp + self.__board[i] + ""
         return tmp
+
+    def get__board(self):
+        return self.__board
+
+    def cheat(self):
+        for x in range(0, len(self.__board)):
+            self.__board[x] = "o"

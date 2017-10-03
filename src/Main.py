@@ -32,9 +32,15 @@ class Disco:
             if args[0].isdigit():
                 if int(args[0]) >= 0:
                     if int(args[0]) <= 9:
-                        ticTacToe.makeMove(int(args[0]) - 1)
-                    await client.say("Move made")
-                    client.say(ticTacToe.status())
+                        if ticTacToe.makeMove(int(args[0]) - 1):
+                            await client.say("Move made")
+                            if ticTacToe.checkLast() == True:
+                                await client.say(ticTacToe.status())
+                                await client.say("Game over")
+                            else:
+                                ticTacToe.botMove()
+                                await client.say(ticTacToe.status())
+
 
             elif args[0] == "status":
                 await client.say(ticTacToe.status())
@@ -42,6 +48,13 @@ class Disco:
                 ticTacToe.resetGame()
             elif args[0] == "help":
                 await client.say("Arguments: 1-9 (make move) | status (display game status) | reset (resets game)")
+            elif args[0] == "test":
+                await client.say(ticTacToe.get__board())
+            elif args[0] == "cheat":
+                ticTacToe.cheat()
+                await client.say(ticTacToe.status())
+                await client.say("Ultimate win!")
+
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
