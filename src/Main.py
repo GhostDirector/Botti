@@ -2,15 +2,17 @@ import discord
 import asyncio
 import src.Dice
 import src.TicTacToe
+import src.falloutQuoteMachine
 
 from discord.ext.commands import Bot
 from discord.ext import commands
 
 class Disco:
     # Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
-    global client, ticTacToe
+    global client, ticTacToe, fQM
     client = Bot(description="DISCOBOT 2000", command_prefix="-", pm_help=True)
     ticTacToe = src.TicTacToe.TicTacToe()
+    fQM = src.falloutQuoteMachine.falloutQuoteMachine()
 
     # Suorittaa tämän metodin aina käynnistyksessä
     @client.event
@@ -26,6 +28,13 @@ class Disco:
         await client.say("Testing")
         await asyncio.sleep(3)
         await client.say("Another testing")
+
+    @client.command()
+    async def quote(*args):
+        try:
+            await client.say(fQM.quote())
+        except Exception:
+            print("Too Fast!")
 
     @client.command()
     async def ttt(*args):
