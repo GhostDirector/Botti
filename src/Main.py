@@ -1,13 +1,16 @@
 import discord
 import asyncio
 import src.Dice
+import src.TicTacToe
+
 from discord.ext.commands import Bot
 from discord.ext import commands
 
 class Disco:
     # Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
-    global client
+    global client, ticTacToe
     client = Bot(description="DISCOBOT 2000", command_prefix="-", pm_help=True)
+    ticTacToe = src.TicTacToe.TicTacToe()
 
     # Suorittaa tämän metodin aina käynnistyksessä
     @client.event
@@ -25,8 +28,34 @@ class Disco:
         await client.say("Another testing")
 
     @client.command()
-    async def testPrint2(*args):
-        await client.say("Testing2")
+    async def ttt(*args):
+        if len(args) >= 1:
+            if args[0].isdigit():
+                if int(args[0]) >= 0:
+                    if int(args[0]) <= 9:
+                        if ticTacToe.makeMove(int(args[0]) - 1):
+                            await client.say("Move made")
+                            if ticTacToe.checkLast() == True:
+                                await client.say(ticTacToe.status())
+                                await client.say("Game over")
+                            else:
+                                ticTacToe.botMove()
+                                await client.say(ticTacToe.status())
+
+
+            elif args[0] == "status":
+                await client.say(ticTacToe.status())
+            elif args[0] == "reset":
+                ticTacToe.resetGame()
+            elif args[0] == "help":
+                await client.say("Arguments: 1-9 (make move) | status (display game status) | reset (resets game)")
+            elif args[0] == "test":
+                await client.say(ticTacToe.get__board())
+            elif args[0] == "cheat":
+                ticTacToe.cheat()
+                await client.say(ticTacToe.status())
+                await client.say("Ultimate win!")
+
 
     @client.command()
     async def roll(*args):
