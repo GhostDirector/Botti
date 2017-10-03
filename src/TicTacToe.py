@@ -12,11 +12,6 @@ class TicTacToe:
     def sendBoard(self):
         return self.__board
 
-    def testPrint(self):
-        for x in range(0, len(self.__board)):
-            print(self.__board[x])
-        print("########################################################")
-
     def resetGame(self):
         for x in range(0, len(self.__board)):
             self.__board[x] = "#"
@@ -38,9 +33,6 @@ class TicTacToe:
                     return True
         return False
 
-    def checkWinner(self):
-        print()
-
     def isFree(self, spot):
         if self.__board[spot] == "#":
             return True
@@ -52,6 +44,15 @@ class TicTacToe:
     def botMove(self):
         return randint(0, 8)
 
-    def Main(self):
-        self.resetGame()
-        self.sendBoard()
+    def status(self):
+        tmp = ""
+        for i in range(0, len(self.__board)):
+            if i == 2:
+                tmp = tmp + self.__board[i] + "\n"
+            elif i == 5:
+                tmp = tmp + self.__board[i] + "\n"
+            elif i == 8:
+                tmp = tmp + self.__board[i]
+            else:
+                tmp = tmp + self.__board[i] + ""
+        return tmp
