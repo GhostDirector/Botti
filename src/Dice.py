@@ -7,10 +7,12 @@ class Dice:
         self.max = 100
 
     def print_roll(self, min, max):
-        print("(", min, "-", max, ") Result: ", randint(min, max))
+        result = randint(min, max)
+        text = "(" + str(min) + "-" + str(max) + ") Result: " + str(result)
+        return text
 
     def roll(self):
-        self.print_roll(self.min, self.max)
+        return self.print_roll(self.min, self.max)
 
     def set_min(self, min):
         if min > 1:

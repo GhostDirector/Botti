@@ -6,9 +6,8 @@ from discord.ext import commands
 
 class Disco:
     # Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
-    global client, dice
+    global client
     client = Bot(description="DISCOBOT 2000", command_prefix="-", pm_help=True)
-    dice = src.Dice.Dice()
 
     # Suorittaa tämän metodin aina käynnistyksessä
     @client.event
@@ -30,8 +29,12 @@ class Disco:
         await client.say("Testing2")
 
     @client.command()
-    async def roll( *args):
-        dice.roll()
+    async def roll(*args):
+        dice = src.Dice.Dice()
+        text = str(dice.roll())
+        await asyncio.sleep(3)
+        await client.say(text)
+
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
