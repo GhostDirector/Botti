@@ -7,5 +7,5 @@ class falloutQuoteMachine:
         print("FalloutQuoteMachine initialized")
 
     def quote(self):
-        tmp = randint(0, 5)
+        tmp = randint(0, 21)
         return linecache.getline('FalloutQuotes.txt', tmp)
