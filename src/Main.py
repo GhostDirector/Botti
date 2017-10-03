@@ -1,7 +1,9 @@
 import discord
 import asyncio
+import src.Dice
 import src.TicTacToe
 import src.falloutQuoteMachine
+
 from discord.ext.commands import Bot
 from discord.ext import commands
 
@@ -11,7 +13,6 @@ class Disco:
     client = Bot(description="DISCOBOT 2000", command_prefix="-", pm_help=True)
     ticTacToe = src.TicTacToe.TicTacToe()
     fQM = src.falloutQuoteMachine.falloutQuoteMachine()
-
 
     # Suorittaa tämän metodin aina käynnistyksessä
     @client.event
@@ -64,6 +65,12 @@ class Disco:
                 await client.say(ticTacToe.status())
                 await client.say("Ultimate win!")
 
+
+    @client.command()
+    async def roll(*args):
+        dice = src.Dice.Dice()
+        text = str(dice.roll(args))
+        await client.say(text)
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
