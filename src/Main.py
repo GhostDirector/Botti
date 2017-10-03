@@ -21,6 +21,9 @@ class Disco:
 
     @client.command()
     async def commands(*args):
+        await client.say("-testPrint\n"
+                         "-ttt #play tic tac toe\n"
+                         "-roll #roll 1-100 or -roll number for 1-number or -roll number number for number-number")
 
 
     # Tekstin tulostus
