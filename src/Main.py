@@ -19,6 +19,9 @@ class Disco:
             len(client.servers)) + ' servers | Connected to ' + str(len(set(client.get_all_members()))) + ' users')
         print('HELLO')
 
+    @client.command()
+    async def commands(*args):
+
 
     # Tekstin tulostus
     @client.command()
