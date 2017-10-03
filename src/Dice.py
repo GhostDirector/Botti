@@ -6,21 +6,32 @@ class Dice:
         self.min = 1
         self.max = 100
 
-    def print_roll(self, min, max):
-        result = randint(min, max)
-        text = "(" + str(min) + "-" + str(max) + ") Result: " + str(result)
+    def roll(self, args):
+        if len(args) >= 2:
+            self.set_min(args[0])
+            self.set_max(args[1])
+        elif len(args) == 1:
+            self.set_max(args[0])
+
+        if self.min <= self.max:
+            result = randint(self.min, self.max)
+        else:
+            result = randint(self.max, self.min)
+
+        text = "(" + str(self.min) + "-" + str(self.max) + ") Result: " + str(result)
         return text
 
-    def roll(self):
-        return self.print_roll(self.min, self.max)
-
     def set_min(self, min):
+        min = int(min)
+
         if min > 1:
             self.min = min
         else:
             self.min = 1
 
     def set_max(self, max):
+        max = int(max)
+
         if max > 1:
             self.max = max
         else:

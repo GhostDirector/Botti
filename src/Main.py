@@ -31,10 +31,8 @@ class Disco:
     @client.command()
     async def roll(*args):
         dice = src.Dice.Dice()
-        text = str(dice.roll())
-        await asyncio.sleep(3)
+        text = str(dice.roll(args))
         await client.say(text)
-
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
