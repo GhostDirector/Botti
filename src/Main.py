@@ -71,7 +71,16 @@ class Disco:
 
     @client.command()
     async def cat(*args):
-        await client.say("https://www.catgifpage.com/")
+
+        try:
+            command = args[0]
+        except IndexError:
+            command = None
+
+        if command == "gif":
+            await client.say("https://www.catgifpage.com/")
+        else:
+            await client.say("http://random.cat/")
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
