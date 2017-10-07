@@ -71,7 +71,7 @@ class Disco:
 
     @client.command()
     async def cat(*args):
-
+        await client.say("https://www.catgifpage.com/")
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
