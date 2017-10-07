@@ -69,6 +69,10 @@ class Disco:
         text = str(dice.roll(args))
         await client.say(text)
 
+    @client.command()
+    async def cat(*args):
+
+
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
 if __name__ == "__main__":
