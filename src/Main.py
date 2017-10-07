@@ -2,6 +2,7 @@ import discord
 import asyncio
 import src.Dice
 import src.TicTacToe
+import src.Cat
 
 from discord.ext.commands import Bot
 from discord.ext import commands
@@ -71,16 +72,12 @@ class Disco:
 
     @client.command()
     async def cat(*args):
-
+        cat = src.Cat.Cat()
         try:
             command = args[0]
         except IndexError:
             command = None
-
-        if command == "gif":
-            await client.say("https://www.catgifpage.com/")
-        else:
-            await client.say("http://random.cat/")
+        await client.say(cat.get_cat(command))
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
