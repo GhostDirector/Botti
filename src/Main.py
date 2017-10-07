@@ -2,6 +2,7 @@ import discord
 import asyncio
 import src.Dice
 import src.TicTacToe
+import src.Cat
 import src.falloutQuoteMachine
 
 from discord.ext.commands import Bot
@@ -20,6 +21,13 @@ class Disco:
         print('Logged in as ' + client.user.name + ' (ID:' + client.user.id + ') | Connected to ' + str(
             len(client.servers)) + ' servers | Connected to ' + str(len(set(client.get_all_members()))) + ' users')
         print('HELLO')
+
+    @client.command()
+    async def commands(*args):
+        await client.say("-testPrint\n"
+                         "-ttt #play tic tac toe\n"
+                         "-roll #roll 1-100 or -roll number for 1-number or -roll number number for number-number\n"
+                         "-cat #various cat links. try -cat help for additional parameters")
 
 
     # Tekstin tulostus
@@ -71,6 +79,15 @@ class Disco:
         dice = src.Dice.Dice()
         text = str(dice.roll(args))
         await client.say(text)
+
+    @client.command()
+    async def cat(*args):
+        cat = src.Cat.Cat()
+        try:
+            command = args[0]
+        except IndexError:
+            command = None
+        await client.say(cat.get_cat(command))
 
     client.run('MzYyMTc2Mjc5MjM3MjMwNTky.DKu2hQ.opMSFRUxngL_P1uNMjN5gyVHdd8')
 
