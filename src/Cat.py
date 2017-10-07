@@ -1,21 +1,24 @@
+from random import choice
+
+
 class Cat:
+    def __init__(self):
+        self.links = ["https://www.catgifpage.com/",
+                      "http://bit.ly/2yO593Z",
+                      "https://youtu.be/PGpQk2cW494/",
+                      "https://youtu.be/9EYZnSXEla0/",
+                      "http://random.cat/"]
+        self.keys = ["gif", "doge", "wizard", "meow", "random"]
+
     def get_cat(self, command):
-        if command == "gif":
-            return "https://www.catgifpage.com/"
-        if command == "doge":
-            return "http://bit.ly/2yO593Z"
-        if command == "wizard":
-            return "https://youtu.be/PGpQk2cW494/"
-        if command == "meow":
-            return "https://youtu.be/9EYZnSXEla0/"
         if command == "help":
             return self.commands()
-        if command == "random":
-            return "http://random.cat/"
-        else:
-            return "http://random.cat/"
+
+        for i, key in enumerate(self.keys):
+            if key == command:
+                return self.links[i]
+
+        return choice(self.links)
 
     def commands(self):
         return "gif\ndoge\nwizard\nmeow\nrandom"
-
-    def random_cat(self):
