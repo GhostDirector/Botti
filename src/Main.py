@@ -24,18 +24,10 @@ class Disco:
 
     @client.command()
     async def commands(*args):
-        await client.say("-testPrint\n"
-                         "-ttt #play tic tac toe\n"
+        await client.say("-ttt #play tic tac toe\n"
                          "-roll #roll 1-100 or -roll number for 1-number or -roll number number for number-number\n"
-                         "-cat #various cat links. try -cat help for additional parameters")
-
-
-    # Tekstin tulostus
-    @client.command()
-    async def testPrint(*args):
-        await client.say("Testing")
-        await asyncio.sleep(3)
-        await client.say("Another testing")
+                         "-cat #various cat links. try -cat help for additional parameters\n"
+                         "-quote #various fallout quotes")
 
     @client.command()
     async def quote(*args):
@@ -59,7 +51,6 @@ class Disco:
                                 ticTacToe.botMove()
                                 await client.say(ticTacToe.status())
 
-
             elif args[0] == "status":
                 await client.say(ticTacToe.status())
             elif args[0] == "reset":
@@ -72,7 +63,6 @@ class Disco:
                 ticTacToe.cheat()
                 await client.say(ticTacToe.status())
                 await client.say("Ultimate win!")
-
 
     @client.command()
     async def roll(*args):
