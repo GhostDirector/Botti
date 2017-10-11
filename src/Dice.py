@@ -22,7 +22,10 @@ class Dice:
         return text
 
     def set_min(self, min):
-        min = int(min)
+        try:
+            min = int(min)
+        except ValueError:
+            min = 1
 
         if min > 1:
             self.min = min
@@ -30,7 +33,10 @@ class Dice:
             self.min = 1
 
     def set_max(self, max):
-        max = int(max)
+        try:
+            max = int(max)
+        except ValueError:
+            max = 1
 
         if max > 1:
             self.max = max
